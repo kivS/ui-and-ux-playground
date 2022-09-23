@@ -1,0 +1,307 @@
+:root {
+    --night-background: #02052c;
+    --night-font-color: white;
+}
+
+body{
+     /* 1em = 16px(default of the parent's font-size) */
+    margin: 1.5em;  
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+.hero-img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url('./images/shoe2.jpg');
+    filter: brightness(0.5) hue-rotate(45deg);
+    background-size: cover;
+    background-position-x: 20%;
+    background-position-y: 20%;
+    animation: introLoad 1s forwards;
+}
+
+.logo{
+    color: white;
+    font-weight: bold;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+header svg{
+    width: 2.3em;
+    margin-top: -.6em;
+    cursor: pointer;
+}
+
+nav{
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: white;
+    width: 50%;
+    height: 100vh;
+    z-index: 2;
+    text-transform: uppercase;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin-top: 8em;
+}
+
+nav ul a{
+    color: black;
+    padding: 0.75em 2em;
+    display: block;
+}
+
+nav ul a:hover{
+    background: rgb(226, 224, 224);
+}
+
+nav svg.close{
+    float: right;
+    cursor: pointer;
+    margin: 1em;
+    width: 2.5em;
+}
+
+section.hero{
+    color: white;
+    height: 90vh;
+    animation: moveDown 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+.hero h1{
+    font-size: 3rem;
+    margin-top: 2em;
+    line-height: 3.3rem;
+}
+
+.hero .subhead{
+    font-size: 1.4rem;
+}
+
+section.hero svg.down-arrow{
+    fill: white;
+    position: absolute;
+    bottom: 2em;
+    width: 1em;
+    margin-top: 2em;
+    animation: moveArrow 1s alternate-reverse  infinite;
+}
+
+.more-info img{
+    width: 100%;
+    object-fit: cover;
+    height: 11em;
+}
+
+.more-info .title{
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.more-info .desc{
+    line-height: 1.5rem;
+}
+
+.open-nav{
+    transform: translateX(0);
+}
+
+
+
+@media only screen and (min-width: 680px){
+    body {
+        margin: 1.5em 5em;
+    }
+}
+
+@media only screen and (min-width: 920px) {
+    .menu{
+        display: none;
+    }
+
+    nav{
+        transform: translateX(0);
+        position: unset;
+        display: block;
+        width: auto;
+        height: auto;
+        background: none;
+    }
+
+    nav ul{
+        display:flex;
+        margin:0;
+    }
+
+    nav ul a {
+        color:white;
+        padding: 0.5em 1.5em;
+        font-size: 0.9rem;
+    }
+
+    nav ul a:hover{
+        background: none;
+        text-decoration: underline;
+    }
+
+    nav .close{
+        display: none;
+    }
+
+    .hero-img{
+        left: unset;
+        right: 0;
+        width: 50%;
+        height: 42em;
+    }
+
+    .logo{
+        color:black;
+    }
+
+    .logo span{
+        color:red;
+    }
+
+    section.hero {
+        height: auto;
+        color: black;
+        width: 40%;
+        margin-bottom: 8em;
+    }
+
+    section.hero svg.down-arrow{
+        fill: black;
+        position: unset;
+
+    }
+
+    .feature{
+        grid-template-columns: repeat(2, auto);
+        display: grid;
+        gap: 3em;
+        margin-bottom: 8em;
+    }
+
+    .feature img{
+        width: 25em;
+    }
+
+    .feature content {
+        text-align: right;
+        width: 25em;
+    }
+
+    .feature.left{
+        grid-template-areas: "left right";
+
+    }
+
+    .feature.left img{
+        grid-area: left;
+    }
+
+    .feature.left .content {
+        text-align: left;
+        width: 25em;
+        justify-self: left;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .wrapper{
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .feature{
+        gap: 0;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+
+    body{
+        background: var(--night-background);
+        color: var(--night-font-color);   
+    }
+
+    nav{
+        background: var(--night-background);
+    }
+
+    nav ul a {
+        color: var(--night-font-color);
+    }
+
+    nav svg.close path {
+        fill: white;
+    }
+
+    nav ul a:hover{
+        background: black;
+    }
+
+    section.hero{
+        color: var(--night-font-color);
+    }
+
+    .logo{
+        color: var(--night-font-color)
+    }
+
+    section.hero svg.down-arrow{
+        fill: var(--night-font-color);
+    }
+
+}
+
+/* https: //bennettfeely.com/clippy/ a tool to generate clip paths */
+@keyframes introLoad{
+    from{
+        clip-path: polygon(0 29%, 30% 28%, 30% 0, 75% 0, 75% 28%, 100% 28%, 100% 73%, 75% 73%, 75% 100%, 21% 100%, 21% 76%, 0 75%);
+    }
+    to{
+        clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+    }
+}
+
+@keyframes moveArrow{
+    from{
+        transform: translateY(-30px);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveDown{
+    from{
+        transform: translateY(-100px);
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
